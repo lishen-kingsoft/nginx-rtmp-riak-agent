@@ -19,7 +19,7 @@ function parseParams(request) {
     result.m3u8Path = query.m3u8Path;
     result.bucket = query.bucket;
   }
-  logger.info('params is: ', result);
+  logger.debug('params is: ', result);
   return result;
 }
 
@@ -31,7 +31,7 @@ function getFileContent(filePath) {
       deferred.reject(new Error(e));
     } else {
       var endTime = new Date().getTime();
-      logger.info('read file successful, with time %dms', endTime - startTime);
+      logger.debug('read file successful, with time %dms', endTime - startTime);
       deferred.resolve(c);
     }
   });

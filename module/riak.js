@@ -66,7 +66,7 @@ module.exports = {
     var startTime = new Date().getTime();
     createClient().then(ping).then(stopClient).then(function() {
       var endTime = new Date().getTime();
-      logger.info('ping successful, with time %dms', endTime - startTime);
+      logger.debug('ping successful, with time %dms', endTime - startTime);
     }).catch(function(e) {
       logger.error(e);
     });
@@ -79,7 +79,7 @@ module.exports = {
       return stopClient(result.riakClient);
     }).then(function() {
       var endTime = new Date().getTime();
-      logger.info('store successful, with time %dms', endTime - startTime);
+      logger.debug('store successful, with time %dms', endTime - startTime);
     }).catch(function(e) {
       logger.error(e);
     });
@@ -88,7 +88,7 @@ module.exports = {
     var startTime = new Date().getTime();
     store(client, null, bucket, key, value).then(function() {
       var endTime = new Date().getTime();
-      logger.info('store with client successful, with time %dms', endTime - startTime);
+      logger.debug('store with client successful, with time %dms', endTime - startTime);
     }).catch(function(e) {
       logger.error(e);
     });
