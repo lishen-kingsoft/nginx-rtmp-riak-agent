@@ -60,7 +60,11 @@ module.exports = {
           logger.error(e);
         });
       }
-      return 200;
+
+      response.writeHead(200, {
+        'Content-Type': 'text/plain'
+      });
+      response.end('done');
     });
 
     server.listen(config.httpConfig.port);
