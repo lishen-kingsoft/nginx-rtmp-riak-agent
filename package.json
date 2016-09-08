@@ -1,0 +1,27 @@
+{
+  "name": "nginx-rtmp-riak-agent",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://lishen-kingsoft@github.com/lishen-kingsoft/nginx-rtmp-riak-agent.git"
+  },
+  "keywords": [
+    "riak"
+  ],
+  "author": "lishen",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/lishen-kingsoft/nginx-rtmp-riak-agent/issues"
+  },
+  "homepage": "https://github.com/lishen-kingsoft/nginx-rtmp-riak-agent#readme",
+  "dependencies": {
+    "basho-riak-client": "^2.2.2",
+    "q": "^1.4.1",
+    "winston": "^2.2.0"
+  }
+}
