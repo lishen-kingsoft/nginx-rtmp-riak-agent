@@ -83,5 +83,14 @@ module.exports = {
     }).catch(function(e) {
       logger.error(e);
     });
+  },
+  storeRiakWithClient: function(client, bucket, key, value) {
+    var startTime = new Date().getTime();
+    store(client, null, bucket, key, value).then(function() {
+      var endTime = new Date().getTime();
+      logger.info('store with client successful, with time %dms', endTime - startTime);
+    }).catch(function(e) {
+      logger.error(e);
+    });
   }
 };

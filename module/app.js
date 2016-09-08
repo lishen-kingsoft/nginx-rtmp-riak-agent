@@ -38,6 +38,12 @@ function getFileContent(filePath) {
   return deferred.promise;
 }
 
+global.riakClient = null;
+config.createClient(function(e, c) {
+  global.riakClient = c;
+  console.log(global.riakClient);
+});
+
 module.exports = {
   listen: function() {
     var server = http.createServer(function(request, response) {
@@ -46,7 +52,8 @@ module.exports = {
         getFileContent(params.tsPath).then(function(fileContent) {
           var paths = params.tsPath.split(path.sep);
           var key = paths[paths.length - 1];
-          riak.storeRiak(params.bucket, key, fileContent);
+          // riak.storeRiak(params.bucket, key, fileContent);
+          riak.storeRiakWithClient(riakClient, params.bucket, key, fileContent);
         }).catch(function(e) {
           logger.error(e);
         });
@@ -55,7 +62,8 @@ module.exports = {
         getFileContent(params.m3u8Path).then(function(fileContent) {
           var paths = params.m3u8Path.split(path.sep);
           var key = paths[paths.length - 1];
-          riak.storeRiak(params.bucket, key, fileContent);
+          // riak.storeRiak(params.bucket, key, fileContent);
+          riak.storeRiakWithClient(riakClient, params.bucket, key, fileContent);
         }).catch(function(e) {
           logger.error(e);
         });
